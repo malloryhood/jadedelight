@@ -99,7 +99,7 @@ $(document).ready(
 				if (!error) //continue if valid input
 				{
 					time = timeCalc(delivCheck);
-					displayRes()
+					strRes()
 					createWindow()
 				}
 			})
@@ -108,18 +108,17 @@ $(document).ready(
 				var win = window.open("", "Title", "toolbar=no,location=no,directories=no,status=no,menubar=no,scrollbars=yes,resizable=yes,width=780,height=200,top="+(screen.height-400)+",left="+(screen.width-840));
 				
 	   		//win.document.body.innerHTML = "Thank you for ordering from Jade Delight!<br><br>"+orderStr+"<br><br>Your order "+ delivStr+time+"<br><br>Your total is: $" + total + ".";
-			win.document.body.innerHTML = "Thank you for ordering from Jade Delight!<br><br>Your order is:<br>"+orderStr+"<br><br>Your order "+ delivStr+time+"<br><br>Your total is: $" + total + "."
+			win.document.body.innerHTML = "Thank you for ordering from Jade Delight!<br><br>Your order is:<br>"+orderStr+"<br>Your order "+ delivStr+time+"<br><br>Your total is: $" + total + "."
 		}
 
-			//a function to display order info to the user
-			function displayRes()
+			//a function to make a string out of the order info.
+			function strRes()
 			{
 				orderStr=""
 				for (i = 0; i <= 4; i++){ //loop through all foods
 					if (quant[i] > 0){
 						orderStr = orderStr + quant[i] + " orders of "+ menuItems[i].name+"<br>"
 					}
-					alert(i)
 				} 
 				if (delivCheck) //decide meesage based on takeout/delivery
 				{
@@ -129,9 +128,6 @@ $(document).ready(
 				{
 					delivStr = "will be ready for pick up at: ";
 				}
-				
-				//display to user
-				//alert("Thank you for ordering from Jade Delight!\n\n" + orderStr+"Your order " +delivStr+time+"Your total is: $" + total + ".");
 			}
 			
 			//function to validate inputs from user
